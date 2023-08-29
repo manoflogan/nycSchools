@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.kumar.karthik.nycschools.compose.NycSchoolsHome
 import com.kumar.karthik.nycschools.data.SchoolsState
 import com.kumar.karthik.nycschools.ui.theme.NYCSchoolsTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,24 +28,12 @@ class NycSchoolsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                nycSchoolsViewModel.schoolsStateFlow.collect {
-                    if (it is SchoolsState.ValidSchoolDataState) {
-                        Timber.i(it.schoolsRecords.toString())
-                    }
-                }
-            }
-        }
         setContent {
             NYCSchoolsTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    
-                }
+                NycSchoolsHome(
+                    Modifier.fillMaxSize(),
+                    nycSchoolsViewModel
+                )
             }
         }
     }
