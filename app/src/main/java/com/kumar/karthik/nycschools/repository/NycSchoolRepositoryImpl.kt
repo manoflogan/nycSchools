@@ -26,9 +26,9 @@ class NycSchoolRepositoryImpl @Inject constructor(
         }
         emit(
             when {
-               response.isSuccessful && responseBody != null -> {
-                   SchoolsState.ValidSchoolDataState(responseBody)
-               }
+                response.isSuccessful && responseBody != null -> {
+                    SchoolsState.ValidSchoolDataState(responseBody)
+                }
                 response.isSuccessful -> {
                     SchoolsState.EmptySchoolDateState
                 }
@@ -63,7 +63,6 @@ class NycSchoolRepositoryImpl @Inject constructor(
                 !response.isSuccessful -> {
                     SchoolPerformanceRecordState.InvalidSchoolPerformanceRecordState
                 }
-
                 else -> SchoolPerformanceRecordState.UnknownSchoolPerformanceRecordState
             }
         )
