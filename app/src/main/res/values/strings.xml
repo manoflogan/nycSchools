@@ -7,4 +7,9 @@
     <string name = "no_records_found">No records were found</string>
     <string name = "error_found">There has been an error</string>
     <string name = "unknown_status">Something untoward has happened</string>
+    <!-- Schoool details -->
+    <string name = "school_name">School name</string>
+    <string name = "reading_score">Reading score</string>
+    <string name = "math_score">Math score</string>
+    <string name = "writing_score">Writing score</string>
 </resources>

@@ -9,7 +9,7 @@ data class SchoolPerformanceRecord(
     @SerializedName("sat_critical_reading_avg_score")
     val readingScore: Int,
     @SerializedName("sat_math_avg_score")
-    val matchScore: Int,
+    val mathScore: Int,
     @SerializedName("sat_writing_avg_score")
     val writingScore: Int
 )

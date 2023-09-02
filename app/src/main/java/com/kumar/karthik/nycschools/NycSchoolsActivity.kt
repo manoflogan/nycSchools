@@ -15,11 +15,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.kumar.karthik.nycschools.compose.NycSchoolsHome
+import com.kumar.karthik.nycschools.compose.NycSchoolsHost
 import com.kumar.karthik.nycschools.data.SchoolsState
 import com.kumar.karthik.nycschools.ui.theme.NYCSchoolsTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class NycSchoolsActivity : AppCompatActivity() {
@@ -30,7 +29,7 @@ class NycSchoolsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NYCSchoolsTheme {
-                NycSchoolsHome(
+                NycSchoolsHost(
                     Modifier.fillMaxSize(),
                     nycSchoolsViewModel
                 )

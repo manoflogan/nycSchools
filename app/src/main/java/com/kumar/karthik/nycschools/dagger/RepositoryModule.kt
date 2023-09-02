@@ -26,9 +26,7 @@ object RepositoryModule {
     @Provides
     internal fun provideOkhttpClient(cache: Cache): OkHttpClient =
         OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().also {
-                it.level = HttpLoggingInterceptor.Level.BODY
-            })
+            .addInterceptor(HttpLoggingInterceptor())
             .cache(cache)
             .connectTimeout(15, TimeUnit.SECONDS)
             .readTimeout(15, TimeUnit.SECONDS)
