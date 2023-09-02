@@ -37,7 +37,7 @@ class NycSchoolsViewModel @Inject constructor(
         fetchNycSchoolRepository()
     }
 
-    internal fun fetchNycSchoolRepository() {
+    private fun fetchNycSchoolRepository() {
         viewModelScope.launch(coroutineDispatcher.io) {
             nycSchoolRepository.fetchAllNycSchools().collect {
                 _schoolsStateFlow.value = it
@@ -47,15 +47,19 @@ class NycSchoolsViewModel @Inject constructor(
 
     fun fetchNycSchoolData(dbn: String) {
         viewModelScope.launch(coroutineDispatcher.io) {
-            _schoolRecordFlow.value = _schoolsStateFlow.filter {
-                it is SchoolsState.ValidSchoolDataState
-            }.transformLatest { schoolState ->
+            _schoolRecordFlow.value = _schoolsStateFlow.transformLatest { schoolState ->
                 emit(
-                    (schoolState as SchoolsState.ValidSchoolDataState).schoolsRecords.firstOrNull { schoolRecord ->
-                        schoolRecord.dbn == dbn
-                    }?.let {
-                        SchoolPerformanceRecordState.SchoolPerformanceDataRecordState(it)
-                    } ?: SchoolPerformanceRecordState.MissingSchoolPerformanceRecordState
+                    when {
+                        schoolState is SchoolsState.ValidSchoolDataState -> {
+                            schoolState.schoolsRecords.firstOrNull { schoolRecord ->
+                                schoolRecord.dbn == dbn
+                            }?.let { schoolRecord ->
+                                SchoolPerformanceRecordState.SchoolPerformanceDataRecordState(schoolRecord)
+                            } ?: SchoolPerformanceRecordState.MissingSchoolPerformanceRecordState
+                        } else -> {
+                            SchoolPerformanceRecordState.MissingSchoolPerformanceRecordState
+                        }
+                    }
                 )
             }.first()
         }
