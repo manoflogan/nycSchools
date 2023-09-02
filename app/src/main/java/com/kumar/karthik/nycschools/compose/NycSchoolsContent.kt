@@ -4,7 +4,6 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -20,8 +19,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kumar.karthik.nycschools.Destination
 import com.kumar.karthik.nycschools.NycSchoolsViewModel
 import com.kumar.karthik.nycschools.R
-import com.kumar.karthik.nycschools.data.SchoolPerformanceRecord
 import com.kumar.karthik.nycschools.data.SchoolPerformanceRecordState
+import com.kumar.karthik.nycschools.data.SchoolsRecord
 
 @Composable
 fun NycSchoolContent(modifier: Modifier, currentDestination: Destination, nycSchoolsViewModel: NycSchoolsViewModel) {
@@ -32,18 +31,10 @@ fun NycSchoolContent(modifier: Modifier, currentDestination: Destination, nycSch
             SchoolPerformanceRecordState.MissingSchoolPerformanceRecordState -> {
                 EmptyView(modifier = contentModifier)
             }
-            SchoolPerformanceRecordState.InvalidSchoolPerformanceRecordState -> {
-                ErrorView(modifier = contentModifier)
-            }
-
-            SchoolPerformanceRecordState.UnknownSchoolPerformanceRecordState -> {
-                UnknownErrorScreen(modifier = contentModifier)
-            }
-
             is SchoolPerformanceRecordState.SchoolPerformanceDataRecordState -> {
                 NycSchoolPerformanceContent(
                     modifier = contentModifier,
-                    schoolPerformanceRecord = (schoolState as SchoolPerformanceRecordState.SchoolPerformanceDataRecordState).schoolsRecord
+                    schoolRecord = (schoolState as SchoolPerformanceRecordState.SchoolPerformanceDataRecordState).schoolsRecord
                 )
             }
             SchoolPerformanceRecordState.LoadingState -> {
@@ -54,12 +45,12 @@ fun NycSchoolContent(modifier: Modifier, currentDestination: Destination, nycSch
 }
 
 @Composable
-fun NycSchoolPerformanceContent(modifier: Modifier, schoolPerformanceRecord: SchoolPerformanceRecord) {
+fun NycSchoolPerformanceContent(modifier: Modifier, schoolRecord: SchoolsRecord) {
     Column(modifier = modifier) {
-        TextContent(stringRes = R.string.school, text = schoolPerformanceRecord.schoolName)
-        TextContent(stringRes = R.string.reading_score, text = schoolPerformanceRecord.readingScore.toString())
-        TextContent(stringRes = R.string.math_score, text = schoolPerformanceRecord.mathScore.toString())
-        TextContent(stringRes = R.string.writing_score, text = schoolPerformanceRecord.writingScore.toString())
+        TextContent(stringRes = R.string.school, text = schoolRecord.schoolName)
+        TextContent(stringRes = R.string.reading_score, text = schoolRecord.readingScore)
+        TextContent(stringRes = R.string.math_score, text = schoolRecord.mathScore)
+        TextContent(stringRes = R.string.writing_score, text = schoolRecord.writingScore)
     }
 }
 
