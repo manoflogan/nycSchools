@@ -16,13 +16,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.kumar.karthik.nycschools.R
 import com.kumar.karthik.nycschools.data.SchoolsRecord
 
 @Composable
 fun SchoolsRecordContent(modifier: Modifier, schoolsRecord: SchoolsRecord, index: Int,
-                         scrollState: ScrollState, onClick: (ScrollState, index: Int, SchoolsRecord) -> Unit) {
+                         onClick: (index: Int, SchoolsRecord) -> Unit) {
     Column(
         modifier = modifier.then(
             Modifier
@@ -31,13 +33,17 @@ fun SchoolsRecordContent(modifier: Modifier, schoolsRecord: SchoolsRecord, index
                     role = Role.Button,
                     onClickLabel = stringResource(id = R.string.school_click_accessibility)
                 ) {
-                    onClick(scrollState, index, schoolsRecord)
+                    onClick(index, schoolsRecord)
                 }
         )
     ) {
-        Column(modifier = Modifier.fillMaxWidth()) {
-            SchoolContent(stringResource = R.string.dbn, text = schoolsRecord.dbn)
-            SchoolContent(stringResource = R.string.school, text = schoolsRecord.schoolName)
+        Column(modifier = Modifier.fillMaxWidth().semantics(mergeDescendants = true) {  }) {
+            schoolsRecord.dbn?.let {
+                SchoolContent(stringResource = R.string.dbn, text = it)
+            }
+            schoolsRecord.schoolName?.let {
+                SchoolContent(stringResource = R.string.school, text = schoolsRecord.schoolName)
+            }
         }
     }
 }

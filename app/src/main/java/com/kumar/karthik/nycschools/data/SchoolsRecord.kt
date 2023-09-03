@@ -6,13 +6,13 @@ import com.google.gson.annotations.SerializedName
  * Instance of this class limit
  */
 data class SchoolsRecord(
-    val dbn: String,
+    val dbn: String? = null,
     @SerializedName("school_name")
-    val schoolName: String,
+    val schoolName: String? = null,
     @SerializedName("sat_critical_reading_avg_score")
-    val readingScore: String,
+    val readingScore: String? = null,
     @SerializedName("sat_math_avg_score")
-    val mathScore: String,
+    val mathScore: String? = null,
     @SerializedName("sat_writing_avg_score")
-    val writingScore: String
+    val writingScore: String? = null
 )

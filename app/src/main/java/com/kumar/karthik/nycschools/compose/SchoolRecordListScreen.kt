@@ -15,13 +15,12 @@ import com.kumar.karthik.nycschools.data.SchoolsRecord
 
 @Composable
 fun SchoolRecordListScreen(modifier: Modifier, schoolRecords: List<SchoolsRecord>,
-                           onClick: (ScrollState, index: Int, SchoolsRecord) -> Unit) {
-    val scrollState = rememberScrollState()
+                           onClick: (index: Int, SchoolsRecord) -> Unit) {
     LazyColumn(modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         itemsIndexed(schoolRecords) { index: Int, item: SchoolsRecord ->
             SchoolsRecordContent(
                 modifier = Modifier.fillMaxWidth(), schoolsRecord = item, index = index,
-                scrollState = scrollState, onClick = onClick
+                onClick = onClick
             )
             if (index < schoolRecords.lastIndex) {
                 Divider(color = MaterialTheme.colorScheme.inverseSurface, thickness = 1.dp)

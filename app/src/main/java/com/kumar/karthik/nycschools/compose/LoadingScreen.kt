@@ -8,7 +8,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.kumar.karthik.nycschools.compose.Tags.LOADING_SCREEN_TAG
 
 @Composable
 fun LoadingScreen(modifier: Modifier) {
@@ -18,7 +20,7 @@ fun LoadingScreen(modifier: Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         CircularProgressIndicator(
-            modifier = Modifier.size(32.dp),
+            modifier = Modifier.size(36.dp),
             color = MaterialTheme.colorScheme.inverseSurface,
         )
     }

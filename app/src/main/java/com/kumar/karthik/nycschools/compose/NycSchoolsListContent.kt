@@ -1,6 +1,7 @@
 package com.kumar.karthik.nycschools.compose
 
 import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -27,10 +28,11 @@ fun NycSchoolsListContent(modifier: Modifier, currentDestination: Destination,
                 LoadingScreen(modifier = contentModifier)
             }
             is SchoolsState.ValidSchoolDataState -> {
+                val scrollState = rememberScrollState()
                 SchoolRecordListScreen(
                     modifier = contentModifier,
                     schoolRecords = (schoolRecordState as SchoolsState.ValidSchoolDataState).schoolsRecords,
-                    onClick = { scrollState: ScrollState, index: Int, schoolRecord: SchoolsRecord ->
+                    onClick = { index: Int, schoolRecord: SchoolsRecord ->
                         coroutineScope.launch {
                             scrollState.animateScrollTo(index)
                             navHostController.navigate("${Destination.School.route}/${schoolRecord.dbn}") {

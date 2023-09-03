@@ -11,9 +11,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -54,7 +52,7 @@ class NycSchoolsViewModel @Inject constructor(
                             schoolState.schoolsRecords.firstOrNull { schoolRecord ->
                                 schoolRecord.dbn == dbn
                             }?.let { schoolRecord ->
-                                SchoolPerformanceRecordState.SchoolPerformanceDataRecordState(schoolRecord)
+                                SchoolPerformanceRecordState.SchoolPerformanceDataState(schoolRecord)
                             } ?: SchoolPerformanceRecordState.MissingSchoolPerformanceRecordState
                         } else -> {
                             SchoolPerformanceRecordState.MissingSchoolPerformanceRecordState

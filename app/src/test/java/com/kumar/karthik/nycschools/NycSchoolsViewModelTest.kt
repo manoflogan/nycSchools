@@ -6,23 +6,16 @@ import com.kumar.karthik.nycschools.data.SchoolPerformanceRecordState
 import com.kumar.karthik.nycschools.data.SchoolsRecord
 import com.kumar.karthik.nycschools.data.SchoolsState
 import com.kumar.karthik.nycschools.repository.NycSchoolRepository
-import com.kumar.karthik.nycschools.repository.NycSchoolRepositoryTest
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit4.MockKRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.MatcherAssert
 import org.hamcrest.Matchers
-import org.junit.Before
 import org.junit.Rule
-import org.junit.Test
 import org.junit.experimental.theories.DataPoints
 import org.junit.experimental.theories.Theories
 import org.junit.experimental.theories.Theory
@@ -74,7 +67,7 @@ class NycSchoolsViewModelTest {
             nycSchoolsViewModel.schoolRecordFlow.value,
             Matchers.`is`(
                 if (schoolsState is SchoolsState.ValidSchoolDataState) {
-                    SchoolPerformanceRecordState.SchoolPerformanceDataRecordState(
+                    SchoolPerformanceRecordState.SchoolPerformanceDataState(
                         schoolsState.schoolsRecords.last()
                     )
                 } else {

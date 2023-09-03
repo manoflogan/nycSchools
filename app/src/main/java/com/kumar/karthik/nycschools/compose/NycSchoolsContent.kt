@@ -31,10 +31,10 @@ fun NycSchoolContent(modifier: Modifier, currentDestination: Destination, nycSch
             SchoolPerformanceRecordState.MissingSchoolPerformanceRecordState -> {
                 EmptyView(modifier = contentModifier)
             }
-            is SchoolPerformanceRecordState.SchoolPerformanceDataRecordState -> {
-                NycSchoolPerformanceContent(
+            is SchoolPerformanceRecordState.SchoolPerformanceDataState -> {
+                NycSchoolContentInternal(
                     modifier = contentModifier,
-                    schoolRecord = (schoolState as SchoolPerformanceRecordState.SchoolPerformanceDataRecordState).schoolsRecord
+                    schoolRecord = (schoolState as SchoolPerformanceRecordState.SchoolPerformanceDataState).schoolsRecord
                 )
             }
             SchoolPerformanceRecordState.LoadingState -> {
@@ -45,21 +45,30 @@ fun NycSchoolContent(modifier: Modifier, currentDestination: Destination, nycSch
 }
 
 @Composable
-fun NycSchoolPerformanceContent(modifier: Modifier, schoolRecord: SchoolsRecord) {
+internal fun NycSchoolContentInternal(modifier: Modifier, schoolRecord: SchoolsRecord) {
     Column(modifier = modifier) {
-        TextContent(stringRes = R.string.school, text = schoolRecord.schoolName)
-        TextContent(stringRes = R.string.reading_score, text = schoolRecord.readingScore)
-        TextContent(stringRes = R.string.math_score, text = schoolRecord.mathScore)
-        TextContent(stringRes = R.string.writing_score, text = schoolRecord.writingScore)
+        schoolRecord.schoolName?.let {
+            TextContent(stringRes = R.string.school, text = it)
+        }
+        schoolRecord.readingScore?.let {
+            TextContent(stringRes = R.string.reading_score, text = it)
+        }
+        schoolRecord.mathScore?.let {
+            TextContent(stringRes = R.string.math_score, text = it)
+        }
+        schoolRecord.writingScore?.let {
+            TextContent(stringRes = R.string.writing_score, text = it)
+        }
     }
 }
 
 @Composable
-fun TextContent(@StringRes stringRes: Int, text: String) {
+private fun TextContent(@StringRes stringRes: Int, text: String) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(bottom = 8.dp)
-        .semantics(mergeDescendants = true) {}) {
+        .semantics(mergeDescendants = true) {}
+    ) {
         Text(text = stringResource(id = stringRes), style = MaterialTheme.typography.bodyMedium)
         Spacer(modifier = Modifier.width(8.dp))
         Text(text = text, style = MaterialTheme.typography.bodyMedium)
