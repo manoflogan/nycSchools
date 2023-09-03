@@ -20,7 +20,7 @@ fun LoadingScreen(modifier: Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         CircularProgressIndicator(
-            modifier = Modifier.size(36.dp),
+            modifier = Modifier.size(36.dp).testTag(LOADING_SCREEN_TAG),
             color = MaterialTheme.colorScheme.inverseSurface,
         )
     }
