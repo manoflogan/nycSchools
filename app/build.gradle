@@ -23,6 +23,12 @@ android {
         buildConfigField "String", "API_KEY", "\"${System.env.SOCRATA_API_KEY}\""
     }
 
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
