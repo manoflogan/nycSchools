@@ -23,7 +23,7 @@ fun NycSchoolsListContent(modifier: Modifier, currentDestination: Destination,
                 LoadingScreen(modifier = contentModifier)
             }
             is SchoolsState.ValidSchoolDataState -> {
-                SchoolRecordScreen(
+                SchoolRecordListScreen(
                     modifier = contentModifier,
                     schoolRecords = (schoolRecordState as SchoolsState.ValidSchoolDataState).schoolsRecords,
                     onClick = { schoolRecord: SchoolsRecord ->

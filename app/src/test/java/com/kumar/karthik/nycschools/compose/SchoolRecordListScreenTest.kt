@@ -37,7 +37,7 @@ class SchoolRecordListScreenTest {
         }
         composeRule.setContent {
             NYCSchoolsTheme {
-                SchoolRecordScreen(modifier = Modifier.fillMaxSize(), schoolRecords) {
+                SchoolRecordListScreen(modifier = Modifier.fillMaxSize(), schoolRecords) {
                 }
             }
         }
@@ -59,7 +59,7 @@ class SchoolRecordListScreenTest {
         var isClicked = false
         composeRule.setContent {
             NYCSchoolsTheme {
-                SchoolRecordScreen(modifier = Modifier.fillMaxSize(), schoolRecords) {
+                SchoolRecordListScreen(modifier = Modifier.fillMaxSize(), schoolRecords) {
                     isClicked = true
                 }
             }

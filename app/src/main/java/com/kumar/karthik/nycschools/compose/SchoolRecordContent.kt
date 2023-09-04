@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -39,7 +38,7 @@ fun SchoolsRecordContent(modifier: Modifier, schoolsRecord: SchoolsRecord,
             SchoolContent(stringResource = R.string.dbn, text = it)
         }
         schoolsRecord.schoolName?.let {
-            SchoolContent(stringResource = R.string.school, text = schoolsRecord.schoolName)
+            SchoolContent(stringResource = R.string.school, text = it)
         }
     }
 }

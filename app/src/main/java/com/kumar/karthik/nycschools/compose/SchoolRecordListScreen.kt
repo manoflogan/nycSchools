@@ -16,8 +16,8 @@ import com.kumar.karthik.nycschools.data.SchoolsRecord
 import kotlinx.coroutines.launch
 
 @Composable
-fun SchoolRecordScreen(modifier: Modifier, schoolRecords: List<SchoolsRecord>,
-                       onClick: (SchoolsRecord) -> Unit) {
+fun SchoolRecordListScreen(modifier: Modifier, schoolRecords: List<SchoolsRecord>,
+                           onClick: (SchoolsRecord) -> Unit) {
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
     LazyColumn(state = listState, modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
