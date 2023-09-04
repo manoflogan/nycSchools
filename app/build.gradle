@@ -50,11 +50,11 @@ android {
         kotlinCompilerExtensionVersion '1.5.2'
     }
     packagingOptions {
-
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-            pickFirsts += '/META-INF/LICENSE.md'
-        }
+        resources.excludes.addAll(
+                "META-INF/LICENSE-notice.md",
+                "META-INF/LICENSE.md",
+                "/META-INF/{AL2.0,LGPL2.1}"
+        )
     }
 }
 

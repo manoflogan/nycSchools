@@ -1,7 +1,6 @@
 package com.kumar.karthik.nycschools.compose
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,15 +15,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.kumar.karthik.nycschools.R
 import com.kumar.karthik.nycschools.data.SchoolsRecord
 
 @Composable
-fun SchoolsRecordContent(modifier: Modifier, schoolsRecord: SchoolsRecord, index: Int,
-                         onClick: (index: Int, SchoolsRecord) -> Unit) {
+fun SchoolsRecordContent(modifier: Modifier, schoolsRecord: SchoolsRecord,
+                         onClick: (SchoolsRecord) -> Unit) {
     Column(
         modifier = modifier.then(
             Modifier
@@ -33,7 +31,7 @@ fun SchoolsRecordContent(modifier: Modifier, schoolsRecord: SchoolsRecord, index
                     role = Role.Button,
                     onClickLabel = stringResource(id = R.string.school_click_accessibility)
                 ) {
-                    onClick(index, schoolsRecord)
+                    onClick(schoolsRecord)
                 }
         )
     ) {

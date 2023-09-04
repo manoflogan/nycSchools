@@ -1,10 +1,7 @@
 package com.kumar.karthik.nycschools.compose
 
-import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -13,7 +10,6 @@ import com.kumar.karthik.nycschools.Destination
 import com.kumar.karthik.nycschools.NycSchoolsViewModel
 import com.kumar.karthik.nycschools.data.SchoolsRecord
 import com.kumar.karthik.nycschools.data.SchoolsState
-import kotlinx.coroutines.launch
 
 @Composable
 fun NycSchoolsListContent(modifier: Modifier, currentDestination: Destination,
@@ -21,27 +17,22 @@ fun NycSchoolsListContent(modifier: Modifier, currentDestination: Destination,
 ) {
     NycSchoolsHome(modifier, currentDestination) { composableModifier: Modifier ->
         val contentModifier = composableModifier.then(modifier)
-        val coroutineScope = rememberCoroutineScope()
         val schoolRecordState: SchoolsState by viewModel.schoolsStateFlow.collectAsStateWithLifecycle()
         when(schoolRecordState) {
             SchoolsState.LoadingState -> {
                 LoadingScreen(modifier = contentModifier)
             }
             is SchoolsState.ValidSchoolDataState -> {
-                val scrollState = rememberScrollState()
                 SchoolRecordListScreen(
                     modifier = contentModifier,
                     schoolRecords = (schoolRecordState as SchoolsState.ValidSchoolDataState).schoolsRecords,
-                    onClick = { index: Int, schoolRecord: SchoolsRecord ->
-                        coroutineScope.launch {
-                            scrollState.animateScrollTo(index)
+                    onClick = { schoolRecord: SchoolsRecord ->
                             navHostController.navigate("${Destination.School.route}/${schoolRecord.dbn}") {
                                 popUpTo(navHostController.graph.findStartDestination().id) {
                                     saveState = true
                                 }
                                 launchSingleTop = true
                                 restoreState = true
-                            }
                         }
                     }
                 )
