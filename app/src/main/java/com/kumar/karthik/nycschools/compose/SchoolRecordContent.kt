@@ -25,8 +25,8 @@ fun SchoolsRecordContent(modifier: Modifier, schoolsRecord: SchoolsRecord,
                          onClick: (SchoolsRecord) -> Unit) {
     Column(
         modifier = modifier.then(
-            Modifier
-                .padding(8.dp)
+            Modifier.fillMaxWidth()
+                .semantics(mergeDescendants = true) {  }
                 .clickable(
                     role = Role.Button,
                     onClickLabel = stringResource(id = R.string.school_click_accessibility)
@@ -35,13 +35,11 @@ fun SchoolsRecordContent(modifier: Modifier, schoolsRecord: SchoolsRecord,
                 }
         )
     ) {
-        Column(modifier = Modifier.fillMaxWidth().semantics(mergeDescendants = true) {  }) {
-            schoolsRecord.dbn?.let {
-                SchoolContent(stringResource = R.string.dbn, text = it)
-            }
-            schoolsRecord.schoolName?.let {
-                SchoolContent(stringResource = R.string.school, text = schoolsRecord.schoolName)
-            }
+        schoolsRecord.dbn?.let {
+            SchoolContent(stringResource = R.string.dbn, text = it)
+        }
+        schoolsRecord.schoolName?.let {
+            SchoolContent(stringResource = R.string.school, text = schoolsRecord.schoolName)
         }
     }
 }
