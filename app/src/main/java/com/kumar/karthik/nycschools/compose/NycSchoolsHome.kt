@@ -18,6 +18,14 @@ import androidx.compose.ui.semantics.semantics
 import com.kumar.karthik.nycschools.Destination
 import com.kumar.karthik.nycschools.ui.theme.Typography
 
+/**
+ * Sets up the skeleton for the content too be displayed. The skeleton encapsulates the UI to be
+ * displayed
+ *
+ * @param modifier inherited modifier
+ * @param currentDestination current destination set up
+ * @param content composable lambda to be displayed
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NycSchoolsHome(

@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,6 +19,9 @@ import androidx.navigation.navArgument
 import com.kumar.karthik.nycschools.Destination
 import com.kumar.karthik.nycschools.NycSchoolsViewModel
 
+/**
+ * Navigation host composable that manages the display of both feed, and individual content.
+ */
 @Composable
 fun NycSchoolsHost(
     modifier: Modifier = Modifier,
@@ -33,8 +37,15 @@ fun NycSchoolsHost(
     NavHost(navController = navController, startDestination = Destination.Feed.route, modifier = modifier) {
         composable(Destination.Feed.route) {
             NycSchoolsListContent(Modifier.fillMaxSize(), currentDestination, nycSchoolsViewModel,
-                navController
-            )
+            ) { route: String ->
+                navController.navigate(route) {
+                    popUpTo(navController.graph.findStartDestination().id) {
+                        saveState = true
+                    }
+                    launchSingleTop = true
+                    restoreState = true
+                }
+            }
         }
         composable(
             "${Destination.School.route}/{dbn}",

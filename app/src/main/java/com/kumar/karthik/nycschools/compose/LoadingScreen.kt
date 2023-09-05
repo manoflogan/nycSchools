@@ -12,6 +12,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.kumar.karthik.nycschools.compose.Tags.LOADING_SCREEN_TAG
 
+/**
+ * Shows the loading screen.
+ */
 @Composable
 fun LoadingScreen(modifier: Modifier) {
     Column(

@@ -19,6 +19,9 @@ import androidx.compose.ui.unit.dp
 import com.kumar.karthik.nycschools.R
 import com.kumar.karthik.nycschools.compose.Tags.ERROR_ICON_TAG
 
+/**
+ * Shows the error view if the response fetch generates an error.
+ */
 @Composable
 fun ErrorView(modifier: Modifier) {
     Row(

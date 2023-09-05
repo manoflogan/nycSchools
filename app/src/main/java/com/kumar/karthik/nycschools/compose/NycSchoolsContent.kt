@@ -22,8 +22,17 @@ import com.kumar.karthik.nycschools.R
 import com.kumar.karthik.nycschools.data.SchoolPerformanceRecordState
 import com.kumar.karthik.nycschools.data.SchoolsRecord
 
+/**
+ * Shows the data for the individual school data.
+ *
+ * @param modifier inherited modifier
+ * @param currentDestination current destination to be displayed
+ * @param nycSchoolsViewModel view model instance
+ */
 @Composable
-fun NycSchoolContent(modifier: Modifier, currentDestination: Destination, nycSchoolsViewModel: NycSchoolsViewModel) {
+fun NycSchoolContent(
+    modifier: Modifier, currentDestination: Destination, nycSchoolsViewModel: NycSchoolsViewModel
+) {
     NycSchoolsHome(modifier, currentDestination) { composableModifier: Modifier ->
         val contentModifier = composableModifier.then(modifier)
         val schoolState: SchoolPerformanceRecordState by nycSchoolsViewModel.schoolRecordFlow.collectAsStateWithLifecycle()
@@ -44,6 +53,12 @@ fun NycSchoolContent(modifier: Modifier, currentDestination: Destination, nycSch
     }
 }
 
+/**
+ * Shows the specific content including the following
+ *
+ * @param modifier inherited modifier
+ * @param schoolRecord whose state is to be displayed
+ */
 @Composable
 internal fun NycSchoolContentInternal(modifier: Modifier, schoolRecord: SchoolsRecord) {
     Column(modifier = modifier) {
@@ -62,6 +77,12 @@ internal fun NycSchoolContentInternal(modifier: Modifier, schoolRecord: SchoolsR
     }
 }
 
+/**
+ * Shows the text content for a given string
+ *
+ * @param stringRes string resource to be displayed
+ * @param text to be displayed
+ */
 @Composable
 private fun TextContent(@StringRes stringRes: Int, text: String) {
     Row(modifier = Modifier

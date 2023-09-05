@@ -22,7 +22,6 @@ import org.junit.Rule
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.util.concurrent.TimeUnit
 
@@ -95,7 +94,7 @@ class NycSchoolRepositoryTest {
         launch(UnconfinedTestDispatcher()) {
             nycSchoolRepository.fetchAllNycSchools().take(2).collect {
                 MatcherAssert.assertThat(
-                    it, Matchers.`is`(SchoolsState.EmptySchoolDateState)
+                    it, Matchers.`is`(SchoolsState.EmptySchoolDataState)
                 )
             }
         }

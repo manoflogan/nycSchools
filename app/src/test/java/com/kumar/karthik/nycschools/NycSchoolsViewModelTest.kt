@@ -119,7 +119,7 @@ class NycSchoolsViewModelTest {
         @DataPoints
         val schoolRecordStates = arrayOf(
             SchoolsState.LoadingState, SchoolsState.ValidSchoolDataState(parseSchoolRecords()),
-            SchoolsState.EmptySchoolDateState, SchoolsState.UnknownState, SchoolsState.ErrorState
+            SchoolsState.EmptySchoolDataState, SchoolsState.UnknownState, SchoolsState.ErrorState
         )
     }
 }

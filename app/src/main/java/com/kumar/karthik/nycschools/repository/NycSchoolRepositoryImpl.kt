@@ -28,7 +28,7 @@ class NycSchoolRepositoryImpl @Inject constructor(
                     SchoolsState.ValidSchoolDataState(responseBody)
                 }
                 response.isSuccessful -> {
-                    SchoolsState.EmptySchoolDateState
+                    SchoolsState.EmptySchoolDataState
                 }
                 !response.isSuccessful -> {
                     SchoolsState.ErrorState

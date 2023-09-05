@@ -11,6 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.kumar.karthik.nycschools.R
 
+/**
+ * Shows the empty view if there is no data to be displayed
+ */
 @Composable
 fun EmptyView(modifier: Modifier) {
     Column(modifier = modifier.then(Modifier.fillMaxSize()), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {

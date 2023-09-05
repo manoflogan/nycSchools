@@ -4,8 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.NavHostController
 import com.kumar.karthik.nycschools.Destination
 import com.kumar.karthik.nycschools.NycSchoolsViewModel
 import com.kumar.karthik.nycschools.data.SchoolsRecord
@@ -13,7 +11,7 @@ import com.kumar.karthik.nycschools.data.SchoolsState
 
 @Composable
 fun NycSchoolsListContent(modifier: Modifier, currentDestination: Destination,
-                          viewModel: NycSchoolsViewModel, navHostController: NavHostController
+                          viewModel: NycSchoolsViewModel, onNavigate: (String) -> Unit
 ) {
     NycSchoolsHome(modifier, currentDestination) { composableModifier: Modifier ->
         val contentModifier = composableModifier.then(modifier)
@@ -27,17 +25,11 @@ fun NycSchoolsListContent(modifier: Modifier, currentDestination: Destination,
                     modifier = contentModifier,
                     schoolRecords = (schoolRecordState as SchoolsState.ValidSchoolDataState).schoolsRecords,
                     onClick = { schoolRecord: SchoolsRecord ->
-                            navHostController.navigate("${Destination.School.route}/${schoolRecord.dbn}") {
-                                popUpTo(navHostController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
-                        }
+                        onNavigate("${Destination.School.route}/${schoolRecord.dbn}")
                     }
                 )
             }
-            SchoolsState.EmptySchoolDateState -> {
+            SchoolsState.EmptySchoolDataState -> {
                 EmptyView(modifier = contentModifier)
             }
             SchoolsState.ErrorState -> {

@@ -6,7 +6,7 @@ sealed interface SchoolsState {
 
     data class ValidSchoolDataState(val schoolsRecords: List<SchoolsRecord>): SchoolsState
 
-    object EmptySchoolDateState: SchoolsState
+    object EmptySchoolDataState: SchoolsState
 
     object ErrorState: SchoolsState
 
