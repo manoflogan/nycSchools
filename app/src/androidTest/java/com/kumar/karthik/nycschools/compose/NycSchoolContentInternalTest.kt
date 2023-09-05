@@ -26,7 +26,7 @@ class NycSchoolContentInternalTest {
             }
         }
         composeRule.run {
-            onNodeWithText(composeRule.activity.getString(R.string.school)).assertIsDisplayed()
+            onNodeWithText(composeRule.activity.getString(R.string.school_record)).assertIsDisplayed()
             onNodeWithText(SCHOOL_RECORD.schoolName!!).assertIsDisplayed()
             onNodeWithText(composeRule.activity.getString(R.string.reading_score)).assertIsDisplayed()
             onNodeWithText(SCHOOL_RECORD.readingScore!!).assertIsDisplayed()

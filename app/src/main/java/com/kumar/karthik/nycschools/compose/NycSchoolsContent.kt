@@ -63,7 +63,7 @@ fun NycSchoolContent(
 internal fun NycSchoolContentInternal(modifier: Modifier, schoolRecord: SchoolsRecord) {
     Column(modifier = modifier) {
         schoolRecord.schoolName?.let {
-            TextContent(stringRes = R.string.school, text = it)
+            TextContent(stringRes = R.string.school_record, text = it)
         }
         schoolRecord.readingScore?.let {
             TextContent(stringRes = R.string.reading_score, text = it)

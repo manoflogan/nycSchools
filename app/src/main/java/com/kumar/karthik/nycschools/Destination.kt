@@ -24,7 +24,7 @@ sealed class Destination(
     /**
      * Destination used to render individual school content
      */
-    object School: Destination("School", R.string.school)
+    object School: Destination("School", R.string.school_record)
 
     companion object {
         /**
