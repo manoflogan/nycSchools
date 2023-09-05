@@ -8,5 +8,8 @@ import kotlinx.coroutines.flow.Flow
  */
 interface NycSchoolRepository {
 
+    /**
+     * Fetches the list of nyc schools records
+     */
     suspend fun fetchAllNycSchools(): Flow<SchoolsState>
 }

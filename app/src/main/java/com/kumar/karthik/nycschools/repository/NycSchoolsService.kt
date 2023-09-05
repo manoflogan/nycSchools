@@ -6,6 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.HeaderMap
 import retrofit2.http.QueryMap
 
+/**
+ * Retrofit service to fetch the information
+ */
 interface NycSchoolsService {
 
     @GET("f9bf-2cp4.json")

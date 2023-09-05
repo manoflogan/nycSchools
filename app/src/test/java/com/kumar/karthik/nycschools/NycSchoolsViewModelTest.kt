@@ -1,5 +1,6 @@
 package com.kumar.karthik.nycschools
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kumar.karthik.nycschools.data.SchoolPerformanceRecordState
@@ -23,7 +24,6 @@ import org.junit.runner.RunWith
 import java.io.InputStreamReader
 
 @RunWith(Theories::class)
-@OptIn(ExperimentalCoroutinesApi::class)
 class NycSchoolsViewModelTest {
 
     private lateinit var nycSchoolsViewModel: NycSchoolsViewModel
@@ -33,6 +33,9 @@ class NycSchoolsViewModelTest {
 
     @get:Rule
     val testCoroutineRule = TestCoroutineRule()
+
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @MockK
     private lateinit var nycSchoolRepository: NycSchoolRepository

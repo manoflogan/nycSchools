@@ -20,6 +20,9 @@ import com.kumar.karthik.nycschools.data.SchoolsState
 import com.kumar.karthik.nycschools.ui.theme.NYCSchoolsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Launching activity to display the activity screen.
+ */
 @AndroidEntryPoint
 class NycSchoolsActivity : AppCompatActivity() {
 
