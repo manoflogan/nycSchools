@@ -19,6 +19,16 @@ import androidx.compose.ui.unit.dp
 import com.kumar.karthik.nycschools.R
 import com.kumar.karthik.nycschools.data.SchoolsRecord
 
+/**
+ * Shows the row of datum associated with a single school record in a feed of content
+ *
+ * The implementation shows both dbn, and text name. When the row is clicked, then a callback action
+ * is invoked to load the data
+ *
+ * @param modifier inherited modifier
+ * @param schoolsRecord school record to be displayed
+ * @param onClick callback function o be invoked on click scion
+ */
 @Composable
 fun SchoolsRecordContent(modifier: Modifier, schoolsRecord: SchoolsRecord,
                          onClick: (SchoolsRecord) -> Unit) {

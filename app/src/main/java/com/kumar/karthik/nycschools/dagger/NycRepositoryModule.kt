@@ -12,6 +12,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import retrofit2.Retrofit
 
+/**
+ * Repository bindings used to fetch school data
+ */
 @Module
 @InstallIn(ViewModelComponent::class)
 interface NycRepositoryModule {

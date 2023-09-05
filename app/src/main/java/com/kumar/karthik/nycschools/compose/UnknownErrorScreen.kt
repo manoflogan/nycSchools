@@ -10,6 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.kumar.karthik.nycschools.R
 
+/**
+ * Screen to be displayed when the unknown content is displayed
+ */
 @Composable
 fun UnknownErrorScreen(modifier: Modifier) {
     Row(

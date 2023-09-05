@@ -21,6 +21,9 @@ import com.kumar.karthik.nycschools.NycSchoolsViewModel
 
 /**
  * Navigation host composable that manages the display of both feed, and individual content.
+ *
+ * @param modifier inherited modifier
+ * @param nycSchoolsViewModel view model instance
  */
 @Composable
 fun NycSchoolsHost(
@@ -35,6 +38,9 @@ fun NycSchoolsHost(
         }
     }
     NavHost(navController = navController, startDestination = Destination.Feed.route, modifier = modifier) {
+        /**
+         * Base route to display the school feed
+         */
         composable(Destination.Feed.route) {
             NycSchoolsListContent(Modifier.fillMaxSize(), currentDestination, nycSchoolsViewModel,
             ) { route: String ->
@@ -47,6 +53,9 @@ fun NycSchoolsHost(
                 }
             }
         }
+        /**
+         * Shows the individual school item
+         */
         composable(
             "${Destination.School.route}/{dbn}",
             arguments = listOf(
@@ -59,7 +68,6 @@ fun NycSchoolsHost(
                 nycSchoolsViewModel.fetchNycSchoolData(it)
                 NycSchoolContent(Modifier.fillMaxWidth().wrapContentSize(), currentDestination, nycSchoolsViewModel)
             }
-
         }
     }
 }

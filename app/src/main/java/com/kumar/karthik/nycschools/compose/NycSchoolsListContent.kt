@@ -9,6 +9,20 @@ import com.kumar.karthik.nycschools.NycSchoolsViewModel
 import com.kumar.karthik.nycschools.data.SchoolsRecord
 import com.kumar.karthik.nycschools.data.SchoolsState
 
+/**
+ * Handles the school list fetch and display based on fetch state.
+ *
+ * - If fetch state equals loading state, hen loading view is displayed
+ * - If no data is available then empty view is displayed
+ * - If the state is an unknown one, an equivalent state is displayed
+ * - If a valid data is fetched, the, a list feed is displayed
+ *
+ * @param modifier inherited modifier
+ * @param currentDestination destination to be loaded, whether it is the feed content, or the
+ *     individual content
+ * @param viewModel view model insttance
+ * @param onNavigate callback function that loads the specific destination
+ */
 @Composable
 fun NycSchoolsListContent(modifier: Modifier, currentDestination: Destination,
                           viewModel: NycSchoolsViewModel, onNavigate: (String) -> Unit

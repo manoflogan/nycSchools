@@ -15,6 +15,13 @@ import androidx.compose.ui.unit.dp
 import com.kumar.karthik.nycschools.data.SchoolsRecord
 import kotlinx.coroutines.launch
 
+/**
+ * Shows a list of school records to be displayed
+ *
+ * @param modifier inherited modifier
+ * @param schoolRecords list of school records to be displayed
+ * @param onClick callback action to be invoked on click
+ */
 @Composable
 fun SchoolRecordListScreen(modifier: Modifier, schoolRecords: List<SchoolsRecord>,
                            onClick: (SchoolsRecord) -> Unit) {
