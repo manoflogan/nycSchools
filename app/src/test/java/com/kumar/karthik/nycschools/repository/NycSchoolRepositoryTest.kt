@@ -82,15 +82,13 @@ class NycSchoolRepositoryTest {
 
     @Test
     fun `validate that when an empty response is returned then a correct response state is returned`() = runTest {
-        ClassLoader.getSystemResourceAsStream(RESOURCE_FILE)!!.use {
-            mockWebServer.enqueue(
-                MockResponse().setResponseCode(200).setBody(
-                    Buffer().readFrom(
-                        "[]".byteInputStream()
-                    )
+        mockWebServer.enqueue(
+            MockResponse().setResponseCode(200).setBody(
+                Buffer().readFrom(
+                    "[]".byteInputStream()
                 )
             )
-        }
+        )
         launch(UnconfinedTestDispatcher()) {
             nycSchoolRepository.fetchAllNycSchools().take(2).collect {
                 MatcherAssert.assertThat(
@@ -102,11 +100,9 @@ class NycSchoolRepositoryTest {
 
     @Test
     fun `validate that when an error response is returned then a correct response state is returned`() = runTest {
-        ClassLoader.getSystemResourceAsStream(RESOURCE_FILE)!!.use {
-            mockWebServer.enqueue(
-                MockResponse().setResponseCode(500)
-            )
-        }
+        mockWebServer.enqueue(
+            MockResponse().setResponseCode(500)
+        )
         launch(UnconfinedTestDispatcher()) {
             nycSchoolRepository.fetchAllNycSchools().take(2).collect {
                 MatcherAssert.assertThat(
