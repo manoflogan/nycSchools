@@ -27,7 +27,12 @@ as a header parameter value. The users can register for an app token using the [
 Since the app token is a sensitive information is a sensitive information, it must be secured. The implementation 
 uses system environment variable to provide the app with the SOCRATA app token. The implementation uses `SOCRATA_API_KEY` as the variable with which the app token is associated.
 
-This should be set up before the app is launched or the system will fail
+This should be set up before the app is launched or the the app won't work as intended.
+
+### Screenshots
+
+* [List view](assets/Tabular_List.png)
+* [School record](assets/School_Record.png)
 
 ### Potential improvements
 * Support offline first paradigm. This can be set up using local sqlite DB powered by Room as the source of truth. The network calls will simply augment the initial calls.
