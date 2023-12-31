@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -31,11 +32,11 @@ import com.kumar.karthik.nycschools.data.SchoolsRecord
  */
 @Composable
 fun NycSchoolContent(
-    modifier: Modifier, currentDestination: Destination, nycSchoolsViewModel: NycSchoolsViewModel
+    modifier: Modifier, currentDestination: Destination, schoolPerformanceRecordState: State<SchoolPerformanceRecordState>
 ) {
     NycSchoolsHome(modifier, currentDestination) { composableModifier: Modifier ->
         val contentModifier = composableModifier.then(modifier)
-        val schoolState: SchoolPerformanceRecordState by nycSchoolsViewModel.schoolRecordFlow.collectAsStateWithLifecycle()
+        val schoolState: SchoolPerformanceRecordState by schoolPerformanceRecordState
         when (schoolState) {
             SchoolPerformanceRecordState.MissingSchoolPerformanceRecordState -> {
                 EmptyView(modifier = contentModifier)

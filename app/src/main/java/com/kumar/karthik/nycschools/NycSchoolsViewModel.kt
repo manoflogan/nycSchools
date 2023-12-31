@@ -41,13 +41,13 @@ class NycSchoolsViewModel @Inject constructor(
     val schoolRecordFlow: StateFlow<SchoolPerformanceRecordState> = _schoolRecordFlow.asStateFlow()
 
     init {
-        fetchNycSchoolRepository()
+        fetchNycSchools()
     }
 
     /**
      * Fetches the list of school records, and initialises the value of
      */
-    private fun fetchNycSchoolRepository() {
+    private fun fetchNycSchools() {
         viewModelScope.launch(coroutineDispatcher.io) {
             nycSchoolRepository.fetchAllNycSchools().collect {
                 _schoolsStateFlow.value = it

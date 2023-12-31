@@ -10,7 +10,7 @@ import kotlinx.coroutines.test.setMain
 import org.junit.rules.ExternalResource
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class TestCoroutineRule constructor(
+class TestCoroutineRule(
     val testDispatcher: CoroutineDispatcher = UnconfinedTestDispatcher()
 ): CoroutineDispatchers, ExternalResource() {
 

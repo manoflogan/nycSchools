@@ -1,6 +1,7 @@
 package com.kumar.karthik.nycschools.compose
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -25,11 +26,11 @@ import com.kumar.karthik.nycschools.data.SchoolsState
  */
 @Composable
 fun NycSchoolsListContent(modifier: Modifier, currentDestination: Destination,
-                          viewModel: NycSchoolsViewModel, onNavigate: (String) -> Unit
+                          schoolState: State<SchoolsState>, onNavigate: (String) -> Unit
 ) {
     NycSchoolsHome(modifier, currentDestination) { composableModifier: Modifier ->
         val contentModifier = composableModifier.then(modifier)
-        val schoolRecordState: SchoolsState by viewModel.schoolsStateFlow.collectAsStateWithLifecycle()
+        val schoolRecordState: SchoolsState by schoolState
         when(schoolRecordState) {
             SchoolsState.LoadingState -> {
                 LoadingScreen(modifier = contentModifier)

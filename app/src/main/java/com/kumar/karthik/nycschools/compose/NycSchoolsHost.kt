@@ -8,6 +8,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
@@ -42,7 +43,9 @@ fun NycSchoolsHost(
          * Base route to display the school feed
          */
         composable(Destination.Feed.route) {
-            NycSchoolsListContent(Modifier.fillMaxSize(), currentDestination, nycSchoolsViewModel,
+            NycSchoolsListContent(
+                Modifier.fillMaxSize(), currentDestination,
+                nycSchoolsViewModel.schoolsStateFlow.collectAsStateWithLifecycle(),
             ) { route: String ->
                 navController.navigate(route) {
                     popUpTo(navController.graph.findStartDestination().id) {
@@ -66,7 +69,12 @@ fun NycSchoolsHost(
         ) { navBackStackEntry ->
             navBackStackEntry.arguments?.getString("dbn")?.let {
                 nycSchoolsViewModel.fetchNycSchoolData(it)
-                NycSchoolContent(Modifier.fillMaxWidth().wrapContentSize(), currentDestination, nycSchoolsViewModel)
+                NycSchoolContent(
+                    Modifier
+                        .fillMaxWidth()
+                        .wrapContentSize(),
+                    currentDestination,
+                    nycSchoolsViewModel.schoolRecordFlow.collectAsStateWithLifecycle())
             }
         }
     }
