@@ -10,6 +10,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.platform.app.InstrumentationRegistry
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kumar.karthik.nycschools.Destination
@@ -17,10 +18,6 @@ import com.kumar.karthik.nycschools.R
 import com.kumar.karthik.nycschools.data.SchoolsRecord
 import com.kumar.karthik.nycschools.data.SchoolsState
 import com.kumar.karthik.nycschools.ui.theme.NYCSchoolsTheme
-import io.mockk.coEvery
-import io.mockk.impl.annotations.MockK
-import io.mockk.junit4.MockKRule
-import kotlinx.coroutines.flow.MutableStateFlow
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -71,7 +68,7 @@ class NycSchoolsListContentTest {
     @Test
     fun testWhenNycSchoolStateIValidSchoolDataStateThenMissingStateIndicatorIsShown() {
         val schoolRecords: List<SchoolsRecord>
-        context.resources.assets.open(RESOURCE_FILE).use {
+        InstrumentationRegistry.getInstrumentation().context.resources.assets.open(RESOURCE_FILE).use {
             val listType = object: TypeToken<List<SchoolsRecord>>() {}.type
             schoolRecords = Gson().fromJson(InputStreamReader(it), listType);
         }
