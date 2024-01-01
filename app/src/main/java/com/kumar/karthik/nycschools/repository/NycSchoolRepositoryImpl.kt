@@ -33,10 +33,10 @@ class NycSchoolRepositoryImpl @Inject constructor(
         }
         emit(
             when {
-                response.isSuccessful && responseBody != null -> {
+                response.isSuccessful && !responseBody.isNullOrEmpty() -> {
                     SchoolsState.ValidSchoolDataState(responseBody)
                 }
-                response.isSuccessful -> {
+                response.isSuccessful  -> {
                     SchoolsState.EmptySchoolDataState
                 }
                 !response.isSuccessful -> {

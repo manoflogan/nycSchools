@@ -16,7 +16,11 @@ import com.kumar.karthik.nycschools.R
  */
 @Composable
 fun EmptyView(modifier: Modifier) {
-    Column(modifier = modifier.then(Modifier.fillMaxSize()), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+    Column(
+        modifier = modifier.then(Modifier.fillMaxSize()),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
         Text(
             text = stringResource(id = R.string.no_records_found),
             style = MaterialTheme.typography.headlineLarge
