@@ -5,6 +5,9 @@ import dagger.Module
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 
+/**
+ * Initialises fake bindings.
+ */
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],

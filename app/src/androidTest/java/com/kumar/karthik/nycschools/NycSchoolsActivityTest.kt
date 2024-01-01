@@ -14,6 +14,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kumar.karthik.nycschools.compose.Tags
+import com.kumar.karthik.nycschools.compose.fetchFromResources
 import com.kumar.karthik.nycschools.data.SchoolsRecord
 import com.kumar.karthik.nycschools.data.SchoolsState
 import com.kumar.karthik.nycschools.repository.NycRepositoryFake
@@ -44,10 +45,9 @@ class NycSchoolsActivityTest {
 
     @Before
     fun setUp() {
-        InstrumentationRegistry.getInstrumentation().context.assets.open("com/kumar/karthik/nycschools/repository/fake_repository_response.json").use {
-            val listType = object: TypeToken<List<SchoolsRecord>>() {}.type
-            schoolRecords = Gson().fromJson(InputStreamReader(it), listType)
-        }
+        schoolRecords = InstrumentationRegistry.getInstrumentation().context.fetchFromResources(
+            "com/kumar/karthik/nycschools/repository/fake_repository_response.json"
+        )
         hiltAndroidRule.inject()
     }
     @Test

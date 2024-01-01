@@ -5,6 +5,9 @@ import android.content.Context
 import androidx.test.runner.AndroidJUnitRunner
 import dagger.hilt.android.testing.HiltTestApplication
 
+/**
+ * Custom test runner for tests.
+ */
 class NycSchoolsTestRunner: AndroidJUnitRunner() {
 
     override fun newApplication(
