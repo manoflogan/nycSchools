@@ -1,11 +1,9 @@
 package com.kumar.karthik.nycschools.compose
 
 import android.content.Context
-import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.unit.dp
@@ -37,7 +35,7 @@ class NycSchoolContentInternalTest {
             }
         }
         composeRule.run {
-            onNodeWithText(context.getString(R.string.school_record)).assertIsDisplayed()
+            onNodeWithText(context.getString(R.string.school)).assertIsDisplayed()
             onNodeWithText(SCHOOL_RECORD.schoolName!!).assertIsDisplayed()
             onNodeWithText(context.getString(R.string.reading_score)).assertIsDisplayed()
             onNodeWithText(SCHOOL_RECORD.readingScore!!).assertIsDisplayed()

@@ -2,7 +2,7 @@
     <string name="app_name">NYCSchools</string>
     <string name = "schools_list">Schools List</string>
     <string name = "dbn">DBN</string>
-    <string name = "school_record">School Record</string>
+    <string name = "school">School</string>
     <string name = "school_click_accessibility">Click to see average scores</string>
     <string name = "no_records_found">No records were found</string>
     <string name = "error_found">There has been an error</string>

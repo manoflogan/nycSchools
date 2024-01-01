@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,9 +30,9 @@ import com.kumar.karthik.nycschools.NycSchoolsViewModel
 @Composable
 fun NycSchoolsHost(
     modifier: Modifier = Modifier,
-    nycSchoolsViewModel: NycSchoolsViewModel = viewModel()
+    nycSchoolsViewModel: NycSchoolsViewModel = viewModel(),
+    navController: NavHostController = rememberNavController()
 ) {
-    val navController = rememberNavController()
     val navBackStackEntry = navController.currentBackStackEntryAsState()
     val currentDestination by remember {
         derivedStateOf {

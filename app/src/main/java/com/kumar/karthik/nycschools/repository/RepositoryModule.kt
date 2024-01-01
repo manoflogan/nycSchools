@@ -1,4 +1,4 @@
-package com.kumar.karthik.nycschools.dagger
+package com.kumar.karthik.nycschools.repository
 
 import android.app.Application
 import com.google.gson.GsonBuilder
