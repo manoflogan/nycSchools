@@ -48,7 +48,7 @@ fun SchoolsRecordContent(modifier: Modifier, schoolsRecord: SchoolsRecord,
             SchoolContent(stringResource = R.string.dbn, text = it)
         }
         schoolsRecord.schoolName?.let {
-            SchoolContent(stringResource = R.string.school_record, text = it)
+            SchoolContent(stringResource = R.string.school, text = it)
         }
     }
 }

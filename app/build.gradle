@@ -16,7 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.kumar.karthik.nycschools.NycSchoolsTestRunner"
         vectorDrawables {
             useSupportLibrary true
         }
@@ -41,11 +41,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
     buildFeatures {
         compose true
@@ -113,6 +113,8 @@ dependencies {
     androidTestImplementation 'io.mockk:mockk-android:1.13.8'
     androidTestImplementation 'io.mockk:mockk-agent:1.13.8'
     androidTestImplementation 'androidx.navigation:navigation-testing:2.7.6'
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.47'
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.47'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
 }

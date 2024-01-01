@@ -1,10 +1,5 @@
-package com.kumar.karthik.nycschools.dagger
+package com.kumar.karthik.nycschools.repository
 
-import com.kumar.karthik.nycschools.repository.NycSchoolRepository
-import com.kumar.karthik.nycschools.repository.NycSchoolRepositoryImpl
-import com.kumar.karthik.nycschools.repository.NycSchoolsService
-import com.kumar.karthik.nycschools.util.CoroutineDispatchers
-import com.kumar.karthik.nycschools.util.CoroutineDispatchersImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -21,9 +16,6 @@ interface NycRepositoryModule {
 
     @Binds
     fun bindNycSchoolRepository(instance: NycSchoolRepositoryImpl): NycSchoolRepository
-
-    @Binds
-    fun bindCoroutineDispatchers(instance: CoroutineDispatchersImpl): CoroutineDispatchers
 
     companion object {
         @Provides

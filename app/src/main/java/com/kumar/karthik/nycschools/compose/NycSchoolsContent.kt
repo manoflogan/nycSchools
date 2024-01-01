@@ -16,9 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kumar.karthik.nycschools.Destination
-import com.kumar.karthik.nycschools.NycSchoolsViewModel
 import com.kumar.karthik.nycschools.R
 import com.kumar.karthik.nycschools.data.SchoolPerformanceRecordState
 import com.kumar.karthik.nycschools.data.SchoolsRecord
@@ -64,7 +62,7 @@ fun NycSchoolContent(
 internal fun NycSchoolContentInternal(modifier: Modifier, schoolRecord: SchoolsRecord) {
     Column(modifier = modifier) {
         schoolRecord.schoolName?.let {
-            TextContent(stringRes = R.string.school_record, text = it)
+            TextContent(stringRes = R.string.school, text = it)
         }
         schoolRecord.readingScore?.let {
             TextContent(stringRes = R.string.reading_score, text = it)

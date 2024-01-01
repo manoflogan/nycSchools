@@ -21,7 +21,7 @@ import com.kumar.karthik.nycschools.data.SchoolsState
  * @param modifier inherited modifier
  * @param currentDestination destination to be loaded, whether it is the feed content, or the
  *     individual content
- * @param viewModel view model insttance
+ * @param viewModel view model instance
  * @param onNavigate callback function that loads the specific destination
  */
 @Composable
