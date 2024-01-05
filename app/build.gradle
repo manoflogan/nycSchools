@@ -52,7 +52,7 @@ android {
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.2'
+        kotlinCompilerExtensionVersion '1.5.7'
     }
     packagingOptions {
         resources.excludes.addAll(
@@ -101,14 +101,14 @@ dependencies {
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation 'io.mockk:mockk-android:1.13.8'
     testImplementation 'io.mockk:mockk-agent:1.13.8'
-    testImplementation platform('androidx.compose:compose-bom:2023.08.00')
+    testImplementation platform('androidx.compose:compose-bom:2023.10.01')
     testImplementation 'androidx.compose.ui:ui-test-junit4'
     testImplementation 'org.robolectric:robolectric:4.10.3'
     testImplementation 'androidx.arch.core:core-testing:2.2.0'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation platform('androidx.compose:compose-bom:2023.08.00')
+    androidTestImplementation platform('androidx.compose:compose-bom:2023.10.01')
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     androidTestImplementation 'io.mockk:mockk-android:1.13.8'
     androidTestImplementation 'io.mockk:mockk-agent:1.13.8'
