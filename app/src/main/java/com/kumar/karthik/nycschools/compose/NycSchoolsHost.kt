@@ -34,7 +34,7 @@ fun NycSchoolsHost(
     navController: NavHostController = rememberNavController()
 ) {
     val navBackStackEntry = navController.currentBackStackEntryAsState()
-    val currentDestination by remember {
+    val currentDestination by remember(navBackStackEntry) {
         derivedStateOf {
             Destination.fromString(navBackStackEntry.value?.destination?.route)
         }

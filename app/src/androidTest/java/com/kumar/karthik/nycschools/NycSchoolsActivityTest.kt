@@ -1,18 +1,18 @@
 package com.kumar.karthik.nycschools
 
 import android.content.Context
+import android.content.Intent
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasText
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.core.net.toUri
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.platform.app.InstrumentationRegistry
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.kumar.karthik.nycschools.compose.Tags
 import com.kumar.karthik.nycschools.compose.fetchFromResources
 import com.kumar.karthik.nycschools.data.SchoolsRecord
@@ -24,14 +24,13 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import java.io.InputStreamReader
 import javax.inject.Inject
 
 @OptIn(ExperimentalTestApi::class)
 @HiltAndroidTest
 class NycSchoolsActivityTest {
 
-    private val composeRule = createComposeRule()
+    private val composeRule = createEmptyComposeRule()
 
     private val hiltAndroidRule = HiltAndroidRule(this)
 
