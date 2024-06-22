@@ -24,7 +24,6 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit4.MockKRule
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.MatcherAssert
@@ -33,7 +32,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class NycSchoolsHostTest {
 
     @get:Rule
@@ -140,8 +138,8 @@ class NycSchoolsHostTest {
             }
             onNodeWithText(schoolRecords.first().dbn!!, useUnmergedTree = true, substring = true).assertIsDisplayed().performScrollTo().performClick()
             MatcherAssert.assertThat(
-                navigationController.currentBackStackEntry?.destination?.route,
-                Matchers.equalTo("${Destination.School.route}/{dbn}"))
+                navigationController.currentBackStackEntry?.arguments?.getString("dbn"),
+                Matchers.equalTo(schoolRecords.first().dbn!!))
         }
     }
 
